@@ -1,0 +1,72 @@
+header {
+  max-width: 980px;
+  height: 300px;
+  margin: auto;
+  border: 1px solid black;
+  text-align: center;
+}
+
+#wrap {
+  display: flex;
+  /* 下に回り込む設定 */
+  flex-wrap: wrap;　
+  /* flexboxの要素をセンターに寄せる */
+  justify-content: center;
+  margin: auto;
+  max-width: 980px;
+  height: auto;
+  border: 1px solid black;
+}
+
+/*
+  wrapのmax-widthやmainのmin-width値を変えた場合、
+  left-barのwidthやメディアクエリのmax-width値も連動して
+  変更することを忘れないようにしてください。
+*/
+
+main {
+  width: 75%;
+  height: 2000px;
+  text-align: center;
+  background-color: #BAD3FF;
+}
+
+.left-bar {
+  position: absolute;
+  width: 245px;
+  text-align: center;
+  background-color: #75A9FF;
+  height: 500px;
+}
+
+footer {
+  max-width: 980px;
+  height: 1000px;
+  margin: auto;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.fixed{
+  position: fixed;
+  top: 0;
+}
+
+.aside-box {
+  width: 200px;
+  height: 80px;
+  border: 1px solid black;
+  margin: auto;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 997px) {
+  main {
+    width: 100%;
+  }
+
+  .left-bar {
+    width: 100%;
+    height: 300px;
+  }
+}
