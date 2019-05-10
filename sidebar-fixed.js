@@ -18,7 +18,7 @@ const fixSidebarWhenScrolled = () => {
   // スクロールされたままリロードされた場合ズレるのでスクロール量(_window.pageYOffset)も足す
   // 更にサイドバーのheight値を足す事により、サイドバーの下部がfooterの上部までスクロールされた場合の判定ができる
   const rangeFromTopToFooter = document.querySelector('footer').getBoundingClientRect().top +
-                        _window.pageYOffset - _rightBar.clientHeight
+    _window.pageYOffset - _rightBar.clientHeight
   // メインコンテンツより下(フッター内)の場合のtopの値を計算
   // right-barの位置をスクロール量を合わせて固定表示にする
   const sidebarTopFixedVal = `${_main.getBoundingClientRect().bottom +
@@ -42,14 +42,14 @@ const fixSidebarWhenScrolled = () => {
 const windowSizeJudge = () => {
   // CSSのメディアクエリでブラウザ幅が997px以下の場合はサイドバーを下に回り込ませているため、
   // サイドバーが横にある場合のみ固定&解除の処理をする
-  if (_window.outerWidth >= HALFWAY_POINT_WIDTH) {
+  if (matchMedia(`(min-width: ${HALFWAY_POINT_WIDTH}px)`).matches) {
     fixSidebarWhenScrolled()
-    _window.addEventListener('scroll', fixSidebarWhenScrolled)
-    // 最初に実行し初期値をセット、以降は画面サイズが変わるたびにleft値を変更
     updateLeftValOfSidebar()
+    _window.addEventListener('scroll', fixSidebarWhenScrolled)
     _window.addEventListener('resize', updateLeftValOfSidebar)
   } else {
     _window.removeEventListener('scroll', fixSidebarWhenScrolled)
+    _window.removeEventListener('resize', updateLeftValOfSidebar)
   }
 }
 
